@@ -68,11 +68,11 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li><a href="<?php echo base_url('beranda')?>">Home</a></li>
-                    <li><a href="<?php echo base_url('pembayaran')?>">Shop</a></li>
-                    <li><a href="<?php echo base_url('pembayaran')?>">Product</a></li>
-                    <li><a href="<?php echo base_url('pembayaran')?>">Cart</a></li>
-                    <li class="active"><a href="<?php echo base_url('pembayaran')?>">Checkout</a></li>
+                    <li class="<?php if ($page == 'home'): ?>active<?php endif; ?>"><a href="<?php echo base_url('home')?>">Home</a></li>
+                    <li class="<?php if ($page == 'shop'): ?>active<?php endif; ?>"><a href="<?php echo base_url('shop')?>">Shop</a></li>
+                    <li class="<?php if ($page == 'product'): ?>active<?php endif; ?>"><a href="<?php echo base_url('product')?>">Product</a></li>
+                    <li class="<?php if ($page == 'cart'): ?>active<?php endif; ?>"><a href="<?php echo base_url('cart')?>">Cart</a></li>
+                    <li class="<?php if ($page == 'checkout'): ?>active<?php endif; ?>"><a href="<?php echo base_url('checkout')?>">Checkout</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->

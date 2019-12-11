@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Beranda extends CI_Controller {
+class Home extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,8 +20,10 @@ class Beranda extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('template/header.php');
-		$this->load->view('beranda/index.php');
-		$this->load->view('template/footer.php');
+		$data['page'] = 'home';
+
+		$this->load->view('template/header', $data);
+		$this->load->view('home/index');
+		$this->load->view('template/footer');
 	}
 }

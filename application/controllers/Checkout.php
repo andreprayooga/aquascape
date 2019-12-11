@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pembayaran extends CI_Controller {
+class Checkout extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,8 +20,10 @@ class Pembayaran extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('template/header.php');
-		$this->load->view('pembayaran/index.php');
+		$data['page'] = 'checkout';
+
+		$this->load->view('template/header.php', $data);
+		$this->load->view('checkout/index.php');
 		$this->load->view('template/footer.php');
 	}
 }
