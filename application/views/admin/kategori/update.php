@@ -33,7 +33,7 @@
 		                            <?php echo form_error('nama_kategori', '<small class="text-danger pl-3">', '</small>'); ?>
 		                        </div>
 		                        <div class="form-group">
-		                            <div class="col-sm-3">
+		                            <div class="col">
 		                                <img src="<?php echo base_url('./assets/admin/uploads/kategori/') . $categories->gambar  ?>" alt="" class="img-thumbnail">
 		                            </div>
 		                            <label for="gambar">File input</label>
