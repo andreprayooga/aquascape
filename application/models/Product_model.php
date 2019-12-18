@@ -32,7 +32,6 @@ class Product_model extends CI_Model
 			'id_kategori' => $this->input->post('id_kategori'),
 			'foto' => $foto,
 			'harga' => $this->input->post('harga'),
-			'id_merk' => $this->input->post('id_merk'),
 		);
 
 		$this->db->insert('produk', $data);

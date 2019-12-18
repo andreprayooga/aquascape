@@ -40,15 +40,15 @@ class Product extends CI_Controller {
 			$this->load->view('admin/templates/footer');
 		} else {
 			date_default_timezone_set('Asia/Jakarta');
-			$config['upload_path'] = './assets/admin/uploads/kategori/';
+			$config['upload_path'] = './assets/admin/uploads/produk/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']     = '2048';
 
 			$this->load->library('upload', $config);
-			if ($this->upload->do_upload('gambar')) {
+			if ($this->upload->do_upload('foto')) {
 				$upload_data = $this->upload->data();
-				$this->Categories_model->insert_data($upload_data['file_name']);
-				redirect('admin/categories');
+				$this->Product_model->insert_data($upload_data['file_name']);
+				redirect('admin/product');
 			} else {
 				echo $this->upload->display_errors();
 			}

@@ -28,21 +28,34 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama Kategori</th>
-                                    <th>Gambar</th>
-                                    <th>Deskripsi</th>
+                                    <th>Nama</th>
+                                    <th>Telephone</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                            <?php foreach($vendor as $num => $val) : ?>
+										<tr>
+											<td><?php echo ++$num; ?></td>
+											<td><?php echo $val->nama ?></td>
+											<td><?php echo $val->telephone ?></td>
+											<td>
+												<a class="btn-sm btn-primary" href="#"><i class="fa fa-search"></i></a>
+												<a class="btn-sm btn-warning"
+													href=""><i
+														class="fa fa-edit"></i></a>
+												<a class="btn-sm btn-danger"
+													href=""><i
+														class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+										<?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama Kategori</th>
-                                    <th>Gambar</th>
-                                    <th>Deskripsi</th>
+                                    <th>Nama</th>
+                                    <th>Telephone</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>

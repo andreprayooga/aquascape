@@ -51,6 +51,12 @@
                   </a>
               </li>
 
+              <li class="<?php echo $url == '' ? "active" : '' ?>">
+                  <a href="<?php echo base_url('admin/vendor') ?>">
+                      <i class="fa fa-circle-o"></i>Orders
+                  </a>
+              </li>
+
           </ul>
       </section>
       <!-- /.sidebar -->

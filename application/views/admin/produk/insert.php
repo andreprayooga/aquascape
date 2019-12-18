@@ -34,7 +34,7 @@
 								</div>
 								<div class="form-group">
 									<label for="deskripsi">Deskripsi</label>
-									<textarea type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Kategori" autocomplete="off"></textarea>
+									<textarea type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Kategori" autocomplete="off"><?php echo set_value('nama') ?></textarea>
 									<?php echo form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
 								</div>
 								<div class="form-group">
@@ -42,7 +42,7 @@
 									<select class="form-control" id="id_kategori" name="id_kategori">
 										<option selected>Pilih Kategori</option>
 										<?php foreach ($this->db->get('kategori')->result_array() as $num => $val) :  ?>
-											<option value="<?php echo $val['id_kategori'] ?>"><?php echo $val['nama_kategori'] ?></option>
+											<option value="<?php echo $val['id_kategori'] ?>"><?php echo $val['nama'] ?></option>
 										<?php endforeach; ?>
 										<?php echo form_error('id_kategori', '<small class="text-danger pl-3">', '</small>'); ?>
 									</select>
@@ -55,16 +55,6 @@
 									<label for="harga">Harga</label>
 									<input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" value="<?php echo set_value('harga') ?>" autocomplete="off">
 									<?php echo form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
-								</div>
-								<div class="form-group">
-									<label for="merk">Merk</label>
-									<select class="form-control" id="merk" name="merk">
-										<option selected>Pilih Kategori</option>
-										<option selected>Chihiros</option>
-										<option selected>Seachem</option>
-										<option selected>Mironekuton</option>
-										<?php echo form_error('merk', '<small class="text-danger pl-3">', '</small>'); ?>
-									</select>
 								</div>
 							</div>
 							<!-- /.box-body -->

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 19, 2019 at 03:34 AM
--- Server version: 5.7.21-1
--- PHP Version: 7.0.29-1+b1
+-- Host: 127.0.0.1
+-- Generation Time: Dec 18, 2019 at 10:21 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -157,10 +159,17 @@ INSERT INTO `level` (`id_level`, `nama`) VALUES
 
 CREATE TABLE `merk` (
   `id_merk` int(11) NOT NULL,
-  `nama` int(11) NOT NULL,
-  `telephone` int(11) NOT NULL,
-  `gambar` int(11) NOT NULL
+  `nama` varchar(128) NOT NULL,
+  `telephone` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `merk`
+--
+
+INSERT INTO `merk` (`id_merk`, `nama`, `telephone`) VALUES
+(1, 'kodak', '086695232'),
+(2, 'berlian', '083636343');
 
 -- --------------------------------------------------------
 
@@ -246,82 +255,30 @@ INSERT INTO `pengguna` (`id_pengguna`, `nama`, `telp`, `email`, `password`, `lat
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `nama` varchar(45) DEFAULT NULL,
-  `deskripsi` text,
+  `deskripsi` varchar(256) DEFAULT NULL,
   `id_kategori` int(11) NOT NULL,
-  `id_merk` int(11) NOT NULL,
   `foto` varchar(45) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL
+  `harga` varchar(128) DEFAULT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_kategori`, `id_merk`, `foto`, `harga`) VALUES
-(1, 'ikan mujair', 'ikan mujair segar', 1, 0, 'ikan mujair.png', 5000),
-(2, 'ikan gurami', 'ikan gurami segar', 2, 0, 'ikan gurami.png', 5000),
-(4, 'Ikan Terbang Tinggi', 'Ikan yang bisa terbang di angkasa ini pernah muncul di indosiar tetetet', 2, 0, '9ec5eb77459be22a5e59597382bc4e91.jpg', 2000000),
-(5, 'Ikan tuna', ' Ikan tuna segar dari lautan jepang', 1, 0, '764b6627b6fffda92cafa67631ecd35c.jpg', 100000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rating`
---
-
-CREATE TABLE `rating` (
-  `id_rating` int(11) NOT NULL,
-  `rating` int(11) DEFAULT NULL,
-  `id_toko` int(11) NOT NULL,
-  `id_pengguna` int(11) NOT NULL,
-  `keterangan` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rating`
---
-
-INSERT INTO `rating` (`id_rating`, `rating`, `id_toko`, `id_pengguna`, `keterangan`) VALUES
-(1, 3, 1, 3, 'toko yang terpercaya'),
-(2, 5, 1, 4, 'toko yang terpercaya');
+INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_kategori`, `foto`, `harga`, `stock`) VALUES
+(1, 'Black Lava', '', 1, 'ikan mujair.png', '5000', 10),
+(2, 'Filter Guard', '', 2, 'ikan gurami.png', '5000', 5),
+(4, 'Glass In Flow', '', 2, '9ec5eb77459be22a5e59597382bc4e91.jpg', '2000000', 10),
+(5, 'Aqua Soil Amazonia', '', 1, '764b6627b6fffda92cafa67631ecd35c.jpg', '100000', 20);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `transaksi`
 --
-
-CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
-  `total` int(11) DEFAULT NULL,
-  `id_pengguna` int(11) DEFAULT NULL,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
-  `bukti` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ulasan`
---
-
-CREATE TABLE `ulasan` (
-  `id_ulasan` int(11) NOT NULL,
-  `rating` int(11) DEFAULT NULL,
-  `keterangan` text,
-  `id_produk` int(11) NOT NULL,
-  `id_pengguna` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ulasan`
---
-
-INSERT INTO `ulasan` (`id_ulasan`, `rating`, `keterangan`, `id_produk`, `id_pengguna`) VALUES
-(1, 5, 'Lorem Ipsum Dolor Sit Amet, consectur adipiscing elit. Maecanas Fermentum laoreet', 1, 3),
-(2, 5, 'Lorem Ipsum Dolor Sit Amet, consectur adipiscing elit. Maecanas Fermentum laoreet', 2, 3);
+-- Error reading structure for table aquascape.transaksi: #1932 - Table 'aquascape.transaksi' doesn't exist in engine
+-- Error reading data for table aquascape.transaksi: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `aquascape`.`transaksi`' at line 1
 
 --
 -- Indexes for dumped tables
@@ -396,31 +353,8 @@ ALTER TABLE `pengguna`
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`,`id_kategori`),
-  ADD KEY `fk_produk_kategori1_idx` (`id_kategori`);
-
---
--- Indexes for table `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`id_rating`,`id_toko`,`id_pengguna`),
-  ADD KEY `fk_rating_toko1_idx` (`id_toko`),
-  ADD KEY `fk_rating_pengguna1_idx` (`id_pengguna`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `fk_transaksi_pengguna1_idx` (`id_pengguna`);
-
---
--- Indexes for table `ulasan`
---
-ALTER TABLE `ulasan`
-  ADD PRIMARY KEY (`id_ulasan`,`id_produk`,`id_pengguna`),
-  ADD KEY `fk_ulasan_produk1_idx` (`id_produk`),
-  ADD KEY `fk_ulasan_pengguna1_idx` (`id_pengguna`);
+  ADD PRIMARY KEY (`id_produk`) USING BTREE,
+  ADD KEY `fk_kategori_id` (`id_kategori`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -431,66 +365,61 @@ ALTER TABLE `ulasan`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `akses`
 --
 ALTER TABLE `akses`
   MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
   MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
-  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
   MODIFY `id_modul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
   MODIFY `id_pengaturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
   MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `rating`
---
-ALTER TABLE `rating`
-  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `ulasan`
---
-ALTER TABLE `ulasan`
-  MODIFY `id_ulasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
@@ -519,26 +448,8 @@ ALTER TABLE `detail_transaksi`
 -- Constraints for table `produk`
 --
 ALTER TABLE `produk`
-  ADD CONSTRAINT `fk_produk_kategori1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `rating`
---
-ALTER TABLE `rating`
-  ADD CONSTRAINT `fk_rating_pengguna1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `fk_transaksi_pengguna1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`) ON DELETE SET NULL ON UPDATE SET NULL;
-
---
--- Constraints for table `ulasan`
---
-ALTER TABLE `ulasan`
-  ADD CONSTRAINT `fk_ulasan_pengguna1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ulasan_produk1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kategori_id` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

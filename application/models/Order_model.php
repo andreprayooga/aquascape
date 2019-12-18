@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Vendor_model extends CI_Model{
+class Order_model extends CI_Model{
 
   public function __construct()
   {
@@ -11,7 +11,7 @@ class Vendor_model extends CI_Model{
 
   public function get()
   {
-      $query = $this->db->get('merk');
+      $query = $this->db->get('transaksi');
       return $query->result();
   }
 
