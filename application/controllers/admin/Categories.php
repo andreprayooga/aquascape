@@ -113,4 +113,10 @@ class Categories extends CI_Controller {
 			}
 		}
 	}
+
+	public function delete($id)
+	{
+		$this->Categories_model->delete_data($id);
+		redirect('admin/categories','refresh');
+	}
 }
