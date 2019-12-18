@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2019 at 03:56 PM
+-- Generation Time: Dec 18, 2019 at 11:24 PM
 -- Server version: 5.7.21-1
 -- PHP Version: 7.0.29-1+b1
 
@@ -103,29 +103,6 @@ CREATE TABLE `detail_transaksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_toko`
---
-
-CREATE TABLE `jenis_toko` (
-  `id_jenis_toko` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `keterangan` text NOT NULL,
-  `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jenis_toko`
---
-
-INSERT INTO `jenis_toko` (`id_jenis_toko`, `nama`, `keterangan`, `gambar`) VALUES
-(0, 'Standart', '', ''),
-(1, 'Bronze', '', 'bronze.png'),
-(2, 'Silver', '', 'silver.png'),
-(3, 'Gold', '', 'gold.png');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kategori`
 --
 
@@ -141,8 +118,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama`, `gambar`, `deskripsi`) VALUES
-(1, 'ikan air laut', '', ''),
-(2, 'ikan air tawar', '', '');
+(1, 'tanaman', '', ''),
+(2, 'co2', '', '');
 
 -- --------------------------------------------------------
 
@@ -272,23 +249,21 @@ CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `nama` varchar(45) DEFAULT NULL,
   `deskripsi` text,
-  `id_toko` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `foto` varchar(45) DEFAULT NULL,
   `harga` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
-  `satuan` varchar(45) DEFAULT NULL
+  `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_toko`, `id_kategori`, `foto`, `harga`, `status`, `satuan`) VALUES
-(1, 'ikan mujair', 'ikan mujair segar', 1, 1, 'ikan mujair.png', 5000, 1, 'ekor'),
-(2, 'ikan gurami', 'ikan gurami segar', 1, 2, 'ikan gurami.png', 5000, 1, 'ekor'),
-(4, 'Ikan Terbang Tinggi', 'Ikan yang bisa terbang di angkasa ini pernah muncul di indosiar tetetet', 1, 2, '9ec5eb77459be22a5e59597382bc4e91.jpg', 2000000, 0, 'buntut'),
-(5, 'Ikan tuna', ' Ikan tuna segar dari lautan jepang', 1, 1, '764b6627b6fffda92cafa67631ecd35c.jpg', 100000, 1, 'ekor');
+INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_kategori`, `foto`, `harga`, `status`) VALUES
+(1, 'ikan mujair', 'ikan mujair segar', 1, 'ikan mujair.png', 5000, 1),
+(2, 'ikan gurami', 'ikan gurami segar', 2, 'ikan gurami.png', 5000, 1),
+(4, 'Ikan Terbang Tinggi', 'Ikan yang bisa terbang di angkasa ini pernah muncul di indosiar tetetet', 2, '9ec5eb77459be22a5e59597382bc4e91.jpg', 2000000, 0),
+(5, 'Ikan tuna', ' Ikan tuna segar dari lautan jepang', 1, '764b6627b6fffda92cafa67631ecd35c.jpg', 100000, 1);
 
 -- --------------------------------------------------------
 
@@ -333,33 +308,6 @@ CREATE TABLE `rekening` (
 INSERT INTO `rekening` (`id_rekening`, `nama`, `no`, `id_bank`, `id_toko`) VALUES
 (2, 'Wewe', '3456789', 1, 1),
 (3, 'Berlian', '567890', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `toko`
---
-
-CREATE TABLE `toko` (
-  `id_toko` int(11) NOT NULL,
-  `id_jenis_toko` int(11) NOT NULL DEFAULT '0',
-  `nama` varchar(45) DEFAULT NULL,
-  `slogan` varchar(100) DEFAULT NULL,
-  `deskripsi` text,
-  `logo` varchar(45) DEFAULT NULL,
-  `telp` varchar(15) DEFAULT NULL,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `kota` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `toko`
---
-
-INSERT INTO `toko` (`id_toko`, `id_jenis_toko`, `nama`, `slogan`, `deskripsi`, `logo`, `telp`, `latitude`, `longitude`, `kota`) VALUES
-(1, 0, 'pt. ikan sehat', 'ikan sehat untuk kita semua', 'kami bergerak dalam distribusi ikan sehat di seluruh indonesia', 'logo.png', '085331247098', 0.678968, 0.789679, 'Malang'),
-(2, 0, 'Barokah buwana', 'wowow', 'wowow', 'b1932576967d9c7a484daa452a755059.png', '09798697', -7.95651, 112.643, 'surabaya');
 
 -- --------------------------------------------------------
 
@@ -433,12 +381,6 @@ ALTER TABLE `detail_transaksi`
   ADD KEY `fk_produk_has_transaksi_produk1_idx` (`id_produk`);
 
 --
--- Indexes for table `jenis_toko`
---
-ALTER TABLE `jenis_toko`
-  ADD PRIMARY KEY (`id_jenis_toko`);
-
---
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -479,8 +421,7 @@ ALTER TABLE `pengguna`
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`,`id_toko`,`id_kategori`),
-  ADD KEY `fk_produk_usaha1_idx` (`id_toko`),
+  ADD PRIMARY KEY (`id_produk`,`id_kategori`),
   ADD KEY `fk_produk_kategori1_idx` (`id_kategori`);
 
 --
@@ -498,12 +439,6 @@ ALTER TABLE `rekening`
   ADD PRIMARY KEY (`id_rekening`,`id_bank`,`id_toko`),
   ADD KEY `fk_rekening_bank1_idx` (`id_bank`),
   ADD KEY `fk_rekening_toko1_idx` (`id_toko`);
-
---
--- Indexes for table `toko`
---
-ALTER TABLE `toko`
-  ADD PRIMARY KEY (`id_toko`);
 
 --
 -- Indexes for table `transaksi`
@@ -539,11 +474,6 @@ ALTER TABLE `akses`
 --
 ALTER TABLE `bank`
   MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `jenis_toko`
---
-ALTER TABLE `jenis_toko`
-  MODIFY `id_jenis_toko` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
@@ -589,11 +519,6 @@ ALTER TABLE `rating`
 --
 ALTER TABLE `rekening`
   MODIFY `id_rekening` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `toko`
---
-ALTER TABLE `toko`
-  MODIFY `id_toko` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
