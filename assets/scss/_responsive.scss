@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $breakpoint-xl: 'only screen and (min-width:1200px)';
 
 $breakpoint-lg: 'only screen and (min-width:992px) and (max-width:1199px)';
@@ -8,4 +9,16 @@ $breakpoint-sm: 'only screen and (min-width:576px) and (max-width:767px)';
 
 $breakpoint-xs: 'only screen and (max-width:767px)';
 
+=======
+$breakpoint-xl: 'only screen and (min-width:1200px)';
+
+$breakpoint-lg: 'only screen and (min-width:992px) and (max-width:1199px)';
+
+$breakpoint-md: 'only screen and (min-width:768px) and (max-width:991px)';
+
+$breakpoint-sm: 'only screen and (min-width:576px) and (max-width:767px)';
+
+$breakpoint-xs: 'only screen and (max-width:767px)';
+
+>>>>>>> 53292ec5a174a32da9f7b3a86e371fac9a7b5477
 $breakpoint-xs-landscape: 'only screen and (min-width:480px) and (max-width:767px)';
