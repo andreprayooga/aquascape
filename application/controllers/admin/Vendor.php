@@ -23,4 +23,9 @@ class Vendor extends CI_Controller{
       $this->load->view('admin/templates/footer');
   }
 
+  public function insert()
+  {
+      # code...
+  }
+
 }

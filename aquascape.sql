@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 19, 2019 at 02:55 AM
+-- Generation Time: Dec 19, 2019 at 03:34 AM
 -- Server version: 5.7.21-1
 -- PHP Version: 7.0.29-1+b1
 
@@ -66,25 +66,6 @@ INSERT INTO `akses` (`id_akses`, `id_modul`, `id_level`) VALUES
 (27, 4, 1),
 (28, 5, 1),
 (29, 6, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bank`
---
-
-CREATE TABLE `bank` (
-  `id_bank` int(11) NOT NULL,
-  `nama` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `bank`
---
-
-INSERT INTO `bank` (`id_bank`, `nama`) VALUES
-(1, 'BRI'),
-(2, 'BCA');
 
 -- --------------------------------------------------------
 
@@ -171,14 +152,14 @@ INSERT INTO `level` (`id_level`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `merek`
+-- Table structure for table `merk`
 --
 
-CREATE TABLE `merek` (
-  `id_merek` int(11) NOT NULL,
-  `nama_merek` varchar(100) NOT NULL,
-  `telephone` varchar(13) NOT NULL,
-  `logo` text NOT NULL
+CREATE TABLE `merk` (
+  `id_merk` int(11) NOT NULL,
+  `nama` int(11) NOT NULL,
+  `telephone` int(11) NOT NULL,
+  `gambar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -267,20 +248,20 @@ CREATE TABLE `produk` (
   `nama` varchar(45) DEFAULT NULL,
   `deskripsi` text,
   `id_kategori` int(11) NOT NULL,
+  `id_merk` int(11) NOT NULL,
   `foto` varchar(45) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL
+  `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_kategori`, `foto`, `harga`, `status`) VALUES
-(1, 'ikan mujair', 'ikan mujair segar', 1, 'ikan mujair.png', 5000, 1),
-(2, 'ikan gurami', 'ikan gurami segar', 2, 'ikan gurami.png', 5000, 1),
-(4, 'Ikan Terbang Tinggi', 'Ikan yang bisa terbang di angkasa ini pernah muncul di indosiar tetetet', 2, '9ec5eb77459be22a5e59597382bc4e91.jpg', 2000000, 0),
-(5, 'Ikan tuna', ' Ikan tuna segar dari lautan jepang', 1, '764b6627b6fffda92cafa67631ecd35c.jpg', 100000, 1);
+INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `id_kategori`, `id_merk`, `foto`, `harga`) VALUES
+(1, 'ikan mujair', 'ikan mujair segar', 1, 0, 'ikan mujair.png', 5000),
+(2, 'ikan gurami', 'ikan gurami segar', 2, 0, 'ikan gurami.png', 5000),
+(4, 'Ikan Terbang Tinggi', 'Ikan yang bisa terbang di angkasa ini pernah muncul di indosiar tetetet', 2, 0, '9ec5eb77459be22a5e59597382bc4e91.jpg', 2000000),
+(5, 'Ikan tuna', ' Ikan tuna segar dari lautan jepang', 1, 0, '764b6627b6fffda92cafa67631ecd35c.jpg', 100000);
 
 -- --------------------------------------------------------
 
@@ -362,12 +343,6 @@ ALTER TABLE `akses`
   ADD KEY `id_level` (`id_level`);
 
 --
--- Indexes for table `bank`
---
-ALTER TABLE `bank`
-  ADD PRIMARY KEY (`id_bank`);
-
---
 -- Indexes for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
@@ -394,10 +369,10 @@ ALTER TABLE `level`
   ADD PRIMARY KEY (`id_level`);
 
 --
--- Indexes for table `merek`
+-- Indexes for table `merk`
 --
-ALTER TABLE `merek`
-  ADD PRIMARY KEY (`id_merek`);
+ALTER TABLE `merk`
+  ADD PRIMARY KEY (`id_merk`);
 
 --
 -- Indexes for table `modul`
@@ -462,11 +437,6 @@ ALTER TABLE `admin`
 ALTER TABLE `akses`
   MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
--- AUTO_INCREMENT for table `bank`
---
-ALTER TABLE `bank`
-  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -482,10 +452,10 @@ ALTER TABLE `keranjang`
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `merek`
+-- AUTO_INCREMENT for table `merk`
 --
-ALTER TABLE `merek`
-  MODIFY `id_merek` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `merk`
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `modul`
 --

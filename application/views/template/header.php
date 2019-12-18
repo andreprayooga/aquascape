@@ -73,7 +73,6 @@
                     <li class="<?php if ($page == 'product'): ?>active<?php endif; ?>"><a href="<?php echo base_url('product')?>">Product</a></li>
                     <li class="<?php if ($page == 'cart'): ?>active<?php endif; ?>"><a href="<?php echo base_url('cart')?>">Cart</a></li>
                     <li class="<?php if ($page == 'checkout'): ?>active<?php endif; ?>"><a href="<?php echo base_url('checkout')?>">Checkout</a></li>
-                    <li class="<?php if ($page == 'checkout'): ?>active<?php endif; ?>"><a href="<?php echo base_url('checkout')?>">Service</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
