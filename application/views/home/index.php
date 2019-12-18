@@ -2,6 +2,18 @@
 <div class="products-catagories-area clearfix">
     <div class="amado-pro-catagory clearfix">
 
+        <?php foreach ($categories as $key => $value): ?>
+            <div class="single-products-catagory clearfix">
+                <a href="shop.html">
+                    <img src="<?php echo base_url('assets/')?>img/bg-img/1.jpg" alt="">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <h4><?php echo $value->nama_kategori ?></h4>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
         <!-- Single Catagory -->
         <div class="single-products-catagory clearfix">
             <a href="shop.html">

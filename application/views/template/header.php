@@ -9,10 +9,10 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Checkout</title>
+    <title>Aquascape - Natural Beauty In The Aquarium</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="<?php echo base_url('assets/img/core-img/logo2.png') ?>">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/core-style.css') ?>">
@@ -73,18 +73,19 @@
                     <li class="<?php if ($page == 'product'): ?>active<?php endif; ?>"><a href="<?php echo base_url('product')?>">Product</a></li>
                     <li class="<?php if ($page == 'cart'): ?>active<?php endif; ?>"><a href="<?php echo base_url('cart')?>">Cart</a></li>
                     <li class="<?php if ($page == 'checkout'): ?>active<?php endif; ?>"><a href="<?php echo base_url('checkout')?>">Checkout</a></li>
+                    <li class="<?php if ($page == 'checkout'): ?>active<?php endif; ?>"><a href="<?php echo base_url('checkout')?>">Service</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
+                <a href="#" class="btn amado-btn mb-15">SERVICE</a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="<?php echo base_url('assets/img/core-img/cart.png') ?>" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="<?php echo base_url('assets/img/core-img/favorites.png') ?>" alt=""> Favourite</a>
                 <a href="#" class="search-nav"><img src="<?php echo base_url('assets/img/core-img/search.png') ?>" alt=""> Search</a>
+                <a href="cart.html" class="cart-nav"><img src="<?php echo base_url('assets/img/core-img/cart.png') ?>" alt=""> Cart <span>(0)</span></a>
+                <a href="#" class="fav-nav"><img src="<?php echo base_url('assets/img/core-img/favorites.png') ?>" alt=""> Sign In</a>
+                <a href="#" class="fav-nav"><img src="<?php echo base_url('assets/img/core-img/favorites.png') ?>" alt=""> About</a>
             </div>
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">
