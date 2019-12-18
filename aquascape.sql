@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 19, 2019 at 02:42 AM
+-- Generation Time: Dec 19, 2019 at 02:55 AM
 -- Server version: 5.7.21-1
 -- PHP Version: 7.0.29-1+b1
 
@@ -108,7 +108,7 @@ CREATE TABLE `detail_transaksi` (
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(45) DEFAULT NULL,
+  `nama` varchar(45) DEFAULT NULL,
   `gambar` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -117,7 +117,7 @@ CREATE TABLE `kategori` (
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `gambar`, `deskripsi`) VALUES
+INSERT INTO `kategori` (`id_kategori`, `nama`, `gambar`, `deskripsi`) VALUES
 (1, 'Aquatic Plants', '', ''),
 (2, 'Co2', '', ''),
 (3, 'Nutrients', '', ''),

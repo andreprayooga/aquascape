@@ -45,9 +45,6 @@
                   </a>
               </li>
 
-              <li>
-                  <a href="https://github.com/andreprayooga/express-shoes.git"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a>
-              </li>
           </ul>
       </section>
       <!-- /.sidebar -->

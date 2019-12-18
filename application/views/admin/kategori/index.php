@@ -11,7 +11,7 @@
 					<li class="active">List Categories</li>
 				</ol>
 			</section>
-			
+
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
@@ -36,7 +36,7 @@
 									<?php foreach($categories as $num => $val) : ?>
 										<tr>
 											<td><?php echo ++$num; ?></td>
-											<td><?php echo $val->nama_kategori ?></td>
+											<td><?php echo $val->nama ?></td>
 											<td><?php echo $val->deskripsi ?></td>
 											<td>
 												<a class="btn-sm btn-primary" href="#"><i class="fa fa-search"></i></a>
@@ -125,4 +125,3 @@
 				</div>
 			</div>
 		</div>
-		
