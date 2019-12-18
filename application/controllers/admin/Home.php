@@ -20,10 +20,13 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['page'] = 'home';
+		$data['title'] = 'Dashboard Aquascape';
+		$data['url'] = 'Dashboard';
 
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/home/index');
-		$this->load->view('admin/template/footer');
+		$this->load->view('admin/templates/header', $data);
+		$this->load->view('admin/templates/topbar', $data);
+		$this->load->view('admin/templates/sidebar', $data);
+		$this->load->view('admin/index');
+		$this->load->view('admin/templates/footer');
 	}
 }
