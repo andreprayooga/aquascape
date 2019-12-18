@@ -6,21 +6,20 @@
 					ㅤㅤ
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-clipboard"></i> Master Data</a></li>
-					<li><a href="#">Toko</a></li>
-					<li class="active">List Toko</li>
+					<li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-clipboard"></i> Master Data</a></li>
+					<li><a href="<?php echo base_url('admin/categories') ?>">Categories</a></li>
+					<li class="active">List Categories</li>
 				</ol>
 			</section>
-
+			
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="box">
 							<div class="box-header">
-								<h3 class="box-title">List Data Toko</h3>
-								<button class="btn btn-sm btn-primary pull-right" data-toggle="modal"
-									data-target="#modalTambahToko">Tambah Data</button>
+								<h3 class="box-title">List Categories</h3>
+								<a class="btn btn-sm btn-primary pull-right" href="<?php echo base_url('admin/categories/insert') ?>">Tambah Data</a>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
@@ -29,19 +28,32 @@
 										<tr>
 											<th>No.</th>
 											<th>Nama Kategori</th>
-											<th>Gambar</th>
 											<th>Deskripsi</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
-
+									<?php foreach($categories as $num => $val) : ?>
+										<tr>
+											<td><?php echo ++$num; ?></td>
+											<td><?php echo $val->nama_kategori ?></td>
+											<td><?php echo $val->deskripsi ?></td>
+											<td>
+												<a class="btn-sm btn-primary" href="#"><i class="fa fa-search"></i></a>
+												<a class="btn-sm btn-warning"
+													href="<?php echo site_url("admin/categories/update/" .$val->id_kategori) ?>"><i
+														class="fa fa-edit"></i></a>
+												<a class="btn-sm btn-danger"
+													href="<?php echo site_url("admin/categories/delete/" .$val->id_kategori) ?>"><i
+														class="fa fa-trash"></i></a>
+											</td>
+										</tr>
+										<?php endforeach; ?>
 									</tbody>
 									<tfoot>
 										<tr>
 											<th>No.</th>
 											<th>Nama Kategori</th>
-											<th>Gambar</th>
 											<th>Deskripsi</th>
 											<th>Aksi</th>
 										</tr>
