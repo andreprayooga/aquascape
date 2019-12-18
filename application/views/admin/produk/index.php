@@ -39,6 +39,7 @@
 											<td><?php echo ++$num; ?></td>
 											<td><?php echo $val->nama ?></td>
 											<td><?php echo $val->deskripsi ?></td>
+											<td><?php echo $val->id_kategori ?></td>
 											<td>
 												<a class="btn-sm btn-primary" href="#"><i class="fa fa-search"></i></a>
 												<a class="btn-sm btn-warning"

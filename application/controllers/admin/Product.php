@@ -15,7 +15,7 @@ class Product extends CI_Controller {
 		$data['title'] = 'List Product';
         $data['url'] = 'Product';
         
-        $data['categories'] = $this->Product_model->get();
+        $data['product'] = $this->Product_model->get();
 
 		$this->load->view('admin/templates/header', $data);
 		$this->load->view('admin/templates/topbar', $data);
@@ -27,16 +27,17 @@ class Product extends CI_Controller {
     public function insert()
 	{
 		$this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'trim|required');
-		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required');
+        $this->form_validation->set_rules('harga', 'Harga', 'trim|required');
 
 		if($this->form_validation->run() == false) {
-			$data['title'] = 'Categories Product';
-			$data['url'] = 'Categories';
+			$data['title'] = 'Product';
+			$data['url'] = 'Product';
 
 			$this->load->view('admin/templates/header', $data);
 			$this->load->view('admin/templates/topbar', $data);
 			$this->load->view('admin/templates/sidebar', $data);
-			$this->load->view('admin/kategori/insert');
+			$this->load->view('admin/produk/insert');
 			$this->load->view('admin/templates/footer');
 		} else {
 			date_default_timezone_set('Asia/Jakarta');
@@ -55,7 +56,7 @@ class Product extends CI_Controller {
 		}
 	}
 
-	public function update($id)
+	public function update($id) 
 	{
 		$this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'trim|required');
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required');
