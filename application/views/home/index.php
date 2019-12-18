@@ -9,7 +9,7 @@
                     <!-- Hover Content -->
                     <div class="hover-content">
                         <div class="line"></div>
-                        <h4><?php echo $value->nama_kategori ?></h4>
+                        <h4><?php echo $value->nama ?></h4>
                     </div>
                 </a>
             </div>

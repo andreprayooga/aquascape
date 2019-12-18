@@ -14,7 +14,6 @@ class Product extends CI_Controller {
 	{
 		$data['title'] = 'List Product';
         $data['url'] = 'Product';
-        
         $data['product'] = $this->Product_model->get();
 
 		$this->load->view('admin/templates/header', $data);
@@ -23,7 +22,7 @@ class Product extends CI_Controller {
 		$this->load->view('admin/produk/index', $data);
 		$this->load->view('admin/templates/footer');
     }
-    
+
     public function insert()
 	{
 		$this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'trim|required');
@@ -44,7 +43,7 @@ class Product extends CI_Controller {
 			$config['upload_path'] = './assets/admin/uploads/kategori/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']     = '2048';
-			
+
 			$this->load->library('upload', $config);
 			if ($this->upload->do_upload('gambar')) {
 				$upload_data = $this->upload->data();

@@ -45,9 +45,12 @@
                   </a>
               </li>
 
-              <li>
-                  <a href="https://github.com/andreprayooga/express-shoes.git"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a>
+              <li class="<?php echo $url == 'Vendor' ? "active" : '' ?>">
+                  <a href="<?php echo base_url('admin/vendor') ?>">
+                      <i class="fa fa-circle-o"></i>Vendor
+                  </a>
               </li>
+
           </ul>
       </section>
       <!-- /.sidebar -->
