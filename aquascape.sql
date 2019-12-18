@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 18, 2019 at 11:24 PM
+-- Generation Time: Dec 19, 2019 at 02:42 AM
 -- Server version: 5.7.21-1
 -- PHP Version: 7.0.29-1+b1
 
@@ -108,7 +108,7 @@ CREATE TABLE `detail_transaksi` (
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
-  `nama` varchar(45) DEFAULT NULL,
+  `nama_kategori` varchar(45) DEFAULT NULL,
   `gambar` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -117,9 +117,14 @@ CREATE TABLE `kategori` (
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama`, `gambar`, `deskripsi`) VALUES
-(1, 'tanaman', '', ''),
-(2, 'co2', '', '');
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `gambar`, `deskripsi`) VALUES
+(1, 'Aquatic Plants', '', ''),
+(2, 'Co2', '', ''),
+(3, 'Nutrients', '', ''),
+(4, 'Shrimps', '', ''),
+(5, 'Lighting', '', ''),
+(6, 'Aquarium Tank', '', ''),
+(7, 'Filtrations', '', '');
 
 -- --------------------------------------------------------
 
@@ -162,6 +167,19 @@ INSERT INTO `level` (`id_level`, `nama`) VALUES
 (1, 'admin'),
 (2, 'kasir'),
 (3, 'pembuat laporan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merek`
+--
+
+CREATE TABLE `merek` (
+  `id_merek` int(11) NOT NULL,
+  `nama_merek` varchar(100) NOT NULL,
+  `telephone` varchar(13) NOT NULL,
+  `logo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -218,7 +236,6 @@ CREATE TABLE `pengguna` (
   `telp` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` text,
-  `id_toko` int(11) DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
   `foto` text
@@ -228,16 +245,16 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `nama`, `telp`, `email`, `password`, `id_toko`, `latitude`, `longitude`, `foto`) VALUES
-(2, 'm. nindra zaka', '085331247098', 'mnindrazaka@gmail.com', 'a7f561e744962f5fed246a51067bbd72', 1, -7.95873, 112.638, '8c57cc1c4ad167d01bf26f4581248af8.png'),
-(3, 'Moh. Berlian Nusantara', '085463527362', 'berlian@gmail.com', '81373d0406b0661e30de35cfbeb57413', 4, -8.20468, 114.38, ''),
-(4, 'eri', '085331247098', 'eri@gmail.com', 'eri', NULL, 0.56789, 0.45678, ''),
-(5, 'raka ardianata baida', '085331247098', 'rakaardianata@gmail.com', '38a958280e3602e248b8f341110e6fb3', NULL, NULL, NULL, '95583238b0546ed34cbd9052c1b2243a.png'),
-(6, 'ananta', NULL, 'ananta@gmail.com', 'e918c9572cd5f2c9df880ccb8736eecd', NULL, NULL, NULL, NULL),
-(7, 'ardhana', '085331247098', 'ardhana@gmail.com', '9d906487acc499108bb12b2889706ec7', NULL, -7.95541, 112.632, '6751c22d4ac1acf68cd2087748ce3d01.png'),
-(8, 'aditya', '085331247098', 'aditya@gmail.com', '057829fa5a65fc1ace408f490be486ac', NULL, -7.96277, 112.636, NULL),
-(9, 'fannyervan', NULL, 'fannyervan@gmail.com', 'ff7af2c7ac9fd099d81d52dacbe25811', 5, -7.95873, 112.638, NULL),
-(10, 'wowo', NULL, 'wowo@gmail.com', '167745795e206a7248286b998a7d625c', NULL, -7.95873, 112.638, NULL);
+INSERT INTO `pengguna` (`id_pengguna`, `nama`, `telp`, `email`, `password`, `latitude`, `longitude`, `foto`) VALUES
+(2, 'm. nindra zaka', '085331247098', 'mnindrazaka@gmail.com', 'a7f561e744962f5fed246a51067bbd72', -7.95873, 112.638, '8c57cc1c4ad167d01bf26f4581248af8.png'),
+(3, 'Moh. Berlian Nusantara', '085463527362', 'berlian@gmail.com', '81373d0406b0661e30de35cfbeb57413', -8.20468, 114.38, ''),
+(4, 'eri', '085331247098', 'eri@gmail.com', 'eri', 0.56789, 0.45678, ''),
+(5, 'raka ardianata baida', '085331247098', 'rakaardianata@gmail.com', '38a958280e3602e248b8f341110e6fb3', NULL, NULL, '95583238b0546ed34cbd9052c1b2243a.png'),
+(6, 'ananta', NULL, 'ananta@gmail.com', 'e918c9572cd5f2c9df880ccb8736eecd', NULL, NULL, NULL),
+(7, 'ardhana', '085331247098', 'ardhana@gmail.com', '9d906487acc499108bb12b2889706ec7', -7.95541, 112.632, '6751c22d4ac1acf68cd2087748ce3d01.png'),
+(8, 'aditya', '085331247098', 'aditya@gmail.com', '057829fa5a65fc1ace408f490be486ac', -7.96277, 112.636, NULL),
+(9, 'fannyervan', NULL, 'fannyervan@gmail.com', 'ff7af2c7ac9fd099d81d52dacbe25811', -7.95873, 112.638, NULL),
+(10, 'wowo', NULL, 'wowo@gmail.com', '167745795e206a7248286b998a7d625c', -7.95873, 112.638, NULL);
 
 -- --------------------------------------------------------
 
@@ -286,28 +303,6 @@ CREATE TABLE `rating` (
 INSERT INTO `rating` (`id_rating`, `rating`, `id_toko`, `id_pengguna`, `keterangan`) VALUES
 (1, 3, 1, 3, 'toko yang terpercaya'),
 (2, 5, 1, 4, 'toko yang terpercaya');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rekening`
---
-
-CREATE TABLE `rekening` (
-  `id_rekening` int(11) NOT NULL,
-  `nama` varchar(45) DEFAULT NULL,
-  `no` varchar(45) DEFAULT NULL,
-  `id_bank` int(11) NOT NULL,
-  `id_toko` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rekening`
---
-
-INSERT INTO `rekening` (`id_rekening`, `nama`, `no`, `id_bank`, `id_toko`) VALUES
-(2, 'Wewe', '3456789', 1, 1),
-(3, 'Berlian', '567890', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -399,6 +394,12 @@ ALTER TABLE `level`
   ADD PRIMARY KEY (`id_level`);
 
 --
+-- Indexes for table `merek`
+--
+ALTER TABLE `merek`
+  ADD PRIMARY KEY (`id_merek`);
+
+--
 -- Indexes for table `modul`
 --
 ALTER TABLE `modul`
@@ -414,8 +415,7 @@ ALTER TABLE `pengaturan`
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id_pengguna`),
-  ADD KEY `fk_pengguna_usaha_idx` (`id_toko`);
+  ADD PRIMARY KEY (`id_pengguna`);
 
 --
 -- Indexes for table `produk`
@@ -431,14 +431,6 @@ ALTER TABLE `rating`
   ADD PRIMARY KEY (`id_rating`,`id_toko`,`id_pengguna`),
   ADD KEY `fk_rating_toko1_idx` (`id_toko`),
   ADD KEY `fk_rating_pengguna1_idx` (`id_pengguna`);
-
---
--- Indexes for table `rekening`
---
-ALTER TABLE `rekening`
-  ADD PRIMARY KEY (`id_rekening`,`id_bank`,`id_toko`),
-  ADD KEY `fk_rekening_bank1_idx` (`id_bank`),
-  ADD KEY `fk_rekening_toko1_idx` (`id_toko`);
 
 --
 -- Indexes for table `transaksi`
@@ -478,7 +470,7 @@ ALTER TABLE `bank`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
@@ -489,6 +481,11 @@ ALTER TABLE `keranjang`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `merek`
+--
+ALTER TABLE `merek`
+  MODIFY `id_merek` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `modul`
 --
@@ -514,11 +511,6 @@ ALTER TABLE `produk`
 --
 ALTER TABLE `rating`
   MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `rekening`
---
-ALTER TABLE `rekening`
-  MODIFY `id_rekening` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
@@ -564,12 +556,6 @@ ALTER TABLE `produk`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `fk_rating_pengguna1` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id_pengguna`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `rekening`
---
-ALTER TABLE `rekening`
-  ADD CONSTRAINT `fk_rekening_bank1` FOREIGN KEY (`id_bank`) REFERENCES `bank` (`id_bank`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi`
