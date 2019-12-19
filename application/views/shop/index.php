@@ -91,7 +91,7 @@
                         <div class="product-img">
                             <!-- Hover Thumb -->
                             <!-- <img class="hover-img" src="img/product-img/product2.jpg" alt=""> -->
-                            <img src="<?php echo base_url() .'assets/uploads/products/'. $value->gambar ?>" alt="">
+                            <img src="<?php echo base_url() .'assets/uploads/products/'. $value->gambar_produk ?>" alt="">
                         </div>
 
                         <!-- Product Description -->
