@@ -83,7 +83,6 @@
             <div class="cart-fav-search mb-100">
                 <a href="#" class="search-nav"><img src="<?php echo base_url('assets/img/core-img/search.png') ?>" alt=""> Search</a>
                 <a href="cart.html" class="cart-nav"><img src="<?php echo base_url('assets/img/core-img/cart.png') ?>" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="<?php echo base_url('assets/img/core-img/favorites.png') ?>" alt=""> Sign In</a>
                 <a href="#" class="fav-nav"><img src="<?php echo base_url('assets/img/core-img/favorites.png') ?>" alt=""> About</a>
             </div>
             <!-- Social Button -->

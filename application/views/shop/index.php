@@ -29,31 +29,14 @@
         <h6 class="widget-title mb-30">Brands</h6>
 
         <div class="widget-desc">
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="amado">
-                <label class="form-check-label" for="amado">Amado</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="ikea">
-                <label class="form-check-label" for="ikea">Ikea</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="furniture">
-                <label class="form-check-label" for="furniture">Furniture Inc</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="factory">
-                <label class="form-check-label" for="factory">The factory</label>
-            </div>
-            <!-- Single Form Check -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="artdeco">
-                <label class="form-check-label" for="artdeco">Artdeco</label>
-            </div>
+            <?php foreach ($vendor as $key => $value): ?>
+                <!-- Single Form Check -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="amado">
+                    <label class="form-check-label" for="amado"><?php echo $value->nama_merk ?></label>
+                </div>
+                <!-- Single Form Check -->
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
@@ -101,228 +84,43 @@
         </div>
 
         <div class="row">
-
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product1.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product2.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
+            <?php foreach ($product as $key => $value): ?>
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <!-- Hover Thumb -->
+                            <!-- <img class="hover-img" src="img/product-img/product2.jpg" alt=""> -->
+                            <img src="<?php echo base_url() .'assets/uploads/products/'. $value->gambar ?>" alt="">
                         </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product2.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product3.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">Rp. <?php echo $value->harga ?></p>
+                                <a href="<?php echo base_url('product/detail/') . $value->id_produk ?>">
+                                    <h6><?php echo $value->nama_produk ?></h6>
+                                </a>
                             </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="cart">
+                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product3.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product4.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product4.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product5.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product5.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product6.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Product Area -->
-            <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                <div class="single-product-wrapper">
-                    <!-- Product Image -->
-                    <div class="product-img">
-                        <img src="<?php echo base_url('') ?>assets/img/product-img/product6.jpg" alt="">
-                        <!-- Hover Thumb -->
-                        <img class="hover-img" src="img/product-img/product1.jpg" alt="">
-                    </div>
-
-                    <!-- Product Description -->
-                    <div class="product-description d-flex align-items-center justify-content-between">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">$180</p>
-                            <a href="product-details.html">
-                                <h6>Modern Chair</h6>
-                            </a>
-                        </div>
-                        <!-- Ratings & Cart -->
-                        <div class="ratings-cart text-right">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="cart">
-                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="<?php echo base_url('') ?>assets/img/core-img/cart.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
 
         <div class="row">

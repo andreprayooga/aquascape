@@ -19,9 +19,12 @@ class Product_model extends CI_Model
 	public function get_id($id)
 	{
 		$this->db->select('*');
-		$this->db->from('produk');
-		$this->db->where('id_produk', $id);
-		return $this->db->get()->row(0);
+	    $this->db->from('produk');
+	    $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori');
+	    $this->db->where(array('produk.id_produk' => $id));
+
+	    $query = $this->db->get();
+	    return $query->row();
 	}
 
 	public function insert_data($foto)
